@@ -21,7 +21,7 @@ else returns an empty vector */
 class Solution{
   public:
     vector<int> find3Numbers(vector<int> arr, int n) {
-        // Yourmina[] code here
+        // Your code here
           vector<int> ans;
         vector<int> mini(n  , INT_MAX);
         vector<int>maxi(n , 0);
