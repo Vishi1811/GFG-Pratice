@@ -21,8 +21,8 @@ else returns an empty vector */
 class Solution{
   public:
     vector<int> find3Numbers(vector<int> arr, int n) {
-        // Your code here
-       vector<int> ans;
+        // Yourmina[] code here
+          vector<int> ans;
         vector<int> mini(n  , INT_MAX);
         vector<int>maxi(n , 0);
         mini[0] = arr[0];
