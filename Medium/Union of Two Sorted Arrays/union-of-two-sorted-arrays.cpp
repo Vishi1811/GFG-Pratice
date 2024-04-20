@@ -13,8 +13,8 @@ class Solution{
     {
         //Your code here
         //return vector with correct order of elements
+        int i=0,j=0,k=0;
         vector<int>ans;
-        int i=0,j=0;
         while(i<n&&j<m)
         {
             if(i>0&&arr1[i]==arr1[i-1])
@@ -22,55 +22,55 @@ class Solution{
                 i++;
                 continue;
             }
-            if(j>0 && arr2[j]==arr2[j-1])
+            if(j>0&&arr2[j]==arr2[j-1])
             {
                 j++;
                 continue;
             }
-            if(arr1[i]<arr2[j])
+            if(arr1[i]==arr2[j])
             {
                 ans.push_back(arr1[i]);
+                k++;
                 i++;
-            }
-            else if(arr1[i]>arr2[j])
-            {
-                ans.push_back(arr2[j]);
                 j++;
+            }
+            else if(arr1[i]<arr2[j])
+            {
+                ans.push_back(arr1[i]);
+                k++;
+                i++;
             }
             else
             {
-                ans.push_back(arr1[i]);
-                i++;
+                ans.push_back(arr2[j]);
                 j++;
+                k++;
             }
         }
         while(i<n)
         {
-           if(i>0&&arr1[i]!=arr1[i-1])
-            {
-                ans.push_back(arr1[i]);
-                i++;
-            }
-            else
+             if(i>0&&arr1[i]==arr1[i-1])
             {
                 i++;
+                continue;
             }
-            
+             ans.push_back(arr1[i]);
+            k++;
+            i++;
         }
         while(j<m)
         {
-           if(j>0&&arr2[j]!=arr2[j-1])
+            if(j>0&&arr2[j]==arr2[j-1])
             {
-                ans.push_back(arr2[j]);
                 j++;
+                continue;
             }
-            else
-           {
-               j++;
-               
-           }
+           ans.push_back(arr2[j]);
+            k++;
+            j++;
         }
         return ans;
+        
     }
 };
 
