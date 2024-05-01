@@ -31,11 +31,10 @@ class Solution
     void display(Node *head)
     {
       //your code goes here
-      Node *t=head;
-      while(t)
+      while(head!=NULL)
       {
-          cout<<t->data<<" ";
-          t=t->next;
+          cout<<head->data<<" ";
+          head=head->next;
       }
     }
 };
