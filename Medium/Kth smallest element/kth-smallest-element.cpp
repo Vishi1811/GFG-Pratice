@@ -13,67 +13,10 @@ class Solution{
     // l : starting index of the array i.e 0
     // r : ending index of the array i.e size-1
     // k : find kth smallest element and return using this function
- void merge(int arr[], int l, int m, int r)
-    {
-         // Your code here
-         int l1=m-l+1,l2=r-m;
-         int a[l1],b[l2];
-         int k=l;
-         for(int i=0;i<l1;i++)
-         {
-             a[i]=arr[k++];
-             
-         }
-         int j=m+1;
-         for(int i=0;i<l2;i++)
-         {
-             b[i]=arr[j++];
-             
-         }
-         int index1=0,index2=0,maini=l;
-         while(index1<l1 && index2<l2)
-         {
-             if(a[index1]<b[index2])
-             {
-                 arr[maini]=a[index1];
-                 index1++;
-                 maini++;
-             }
-             else
-             {
-                 arr[maini]=b[index2];
-                 index2++;
-                 maini++;
-             }
-             
-         }
-         while(index1<l1)
-         {
-             arr[maini]=a[index1];
-                 index1++;
-                 maini++;
-         }
-         while(index2<l2)
-         {
-             arr[maini]=b[index2];
-                 index2++;
-                 maini++;
-         }
-    }
-    void sort(int arr[],int l,int r)
-    {
-         if(r>l)
-         {
-             int mid=l+(r-l)/2;
-             sort(arr,l,mid);
-             sort(arr,mid+1,r);
-             merge(arr,l,mid,r);
-         }
-    }
     int kthSmallest(int arr[], int l, int r, int k) {
         //code here
-        sort(arr,l,r);
-        return arr[k-1];
+        sort(arr + l, arr + r + 1); // Corrected range for sorting
+        return arr[l + k - 1]; // Return the kth smallest element
     }
 };
 
