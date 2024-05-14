@@ -12,35 +12,26 @@ class Solution{
     int equilibriumPoint(long long a[], int n) {
     
         // Your code here
-        int sum=0,front_sum=0;
         if(n==1)
         {
-            return n;
+            return 1;
         }
-        // else if(n==2)
-        // {
-        //     return -1;
-        // }
-        else
+        long long s=0,fs=0;
+        for(int i=0;i<n;i++)
         {
-           for(int i=0;i<n;i++)
-           {
-               sum=sum+a[i];
-           }
-        //   sum=sum-a[0];
-           for(int i=0;i<n;i++)
-           {
-               sum=sum-a[i];
-               if(sum==front_sum)
-               {
-                   return i+1;
-               }
-               front_sum=front_sum+a[i];
-               
-           }
-           return -1;
-    
+            s=s+a[i];
         }
+        for(int i=0;i<n;i++)
+        {
+            s=s-a[i];
+            if(s==fs)
+            {
+                return i+1;
+            }
+            fs=fs+a[i];
+        }
+        return -1;
+        
     }
 
 };
