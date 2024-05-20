@@ -6,23 +6,24 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
+    void rev(int arr[],int start,int end)
+    {
+        while(start<=end)
+        {
+            swap(arr[start],arr[end]);
+            start++;
+            end--;
+        }
+    }
     
     //Function to rotate an array by d elements in counter-clockwise direction. 
     void rotateArr(int arr[], int d, int n){
         // code here
-      d=d%n;
-      revrse(arr,0,d-1);
-      revrse(arr,d,n-1);
-      revrse(arr,0,n-1);
-    }
-    void revrse(int arr[],int s,int e)
-    {
-        while(s<e)
-        {
-            swap(arr[s],arr[e]);
-            s++;
-            e--;
-        }
+        d=d%n;
+        rev(arr,0,d-1);
+        rev(arr,d,n-1);
+        rev(arr,0,n-1);
+        
     }
 };
 
