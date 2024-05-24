@@ -9,7 +9,7 @@ class Solution{
     // arr[]: Input Array
     // N : Size of the Array arr[]
     // Function to count inversions in the array.
-long long merge(long long arr[], long long l, long long mid, long long r) {
+   long long merge(long long arr[], long long l, long long mid, long long r) {
     long long inv = 0;
     long long n1 = mid - l + 1;
     long long n2 = r - mid;
