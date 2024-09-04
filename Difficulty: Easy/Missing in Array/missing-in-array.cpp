@@ -12,7 +12,7 @@ class Solution {
 
     // Note that the size of the array is n-1
     int missingNumber(int n, vector<int>& arr) {
-
+       
          int sum=0,suma=0;
         sum=(n*(n+1))/2;
         for(int i=0;i<n-1;i++)
@@ -21,8 +21,8 @@ class Solution {
         }
         int res=sum-suma;
         return res;
-        
-    
+
+        // Your code goes here
     }
 };
 
