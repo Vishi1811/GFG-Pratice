@@ -13,14 +13,14 @@ class Solution {
     // Note that the size of the array is n-1
     int missingNumber(int n, vector<int>& arr) {
        
-         int sum=0,suma=0;
-        sum=(n*(n+1))/2;
-        for(int i=0;i<n-1;i++)
-        {
-            suma=suma+arr[i];
+        int xor1 = 0, xor2 = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            xor2 = xor2 ^ arr[i]; // XOR of array elements
+            xor1 = xor1 ^ (i + 1); //XOR up to [1...N-1]
         }
-        int res=sum-suma;
-        return res;
+        xor1 = xor1 ^ n; //XOR up to [1...N]
+        return (xor1 ^ xor2);
 
         // Your code goes here
     }
