@@ -7,9 +7,8 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    vector<int> findTwoElement(vector<int> a) {
-        // code here
-           long long n = a.size(); // size of the array
+    vector<int> findTwoElement(vector<int>& arr) {
+         long long n = arr.size(); // size of the array
 
         // Find Sn and S2n:
         long long SN = (n * (n + 1)) / 2;
@@ -18,8 +17,8 @@ class Solution {
         // Calculate S and S2:
         long long S = 0, S2 = 0;
         for (int i = 0; i < n; i++) {
-            S += a[i];
-            S2 += (long long)a[i] * (long long)a[i];
+            S += arr[i];
+            S2 += (long long)arr[i] * (long long)arr[i];
         }
     
         //S-Sn = X-Y:
