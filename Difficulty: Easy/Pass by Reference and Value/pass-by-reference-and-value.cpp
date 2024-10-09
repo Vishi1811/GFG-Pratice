@@ -12,12 +12,7 @@ class Solution {
   public:
     vector<int> passedBy(int a, int &b) {
         // code here
-         a = a + 1;  // increment the value of a
-        b = b + 2;  // increment the value of b
-        vector<int> result;
-        result.push_back(a);
-        result.push_back(b);
-        return result;
+        return{a+1,b+2};
     }
 };
 
