@@ -15,15 +15,14 @@ class Solution
     public:
     int select(int arr[], int i,int n)
     {
-        // code here such that selectionSort();
-        for(int j=i+1;j<n;j++)
+        // code here such that selectionSort() sorts arr[]
+        int min=i;
+        for(int j=i;j<n;j++)
         {
-            if(arr[j]<arr[i])
-            {
-                swap(arr[i],arr[j]);
-            }
+            if(arr[j]<=arr[min])min=j;
         }
-       
+        return min;
+        
     }
      
     void selectionSort(int arr[], int n)
@@ -31,9 +30,9 @@ class Solution
        //code here
        for(int i=0;i<n;i++)
        {
-           select(arr,i,n);
+           swap(arr[i],arr[select(arr,i,n)]);
        }
-      
+       
     }
 };
 
