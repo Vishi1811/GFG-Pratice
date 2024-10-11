@@ -17,17 +17,20 @@ void printArray(int arr[], int size)
 class Solution
 {
     public:
-    void insert(int arr[], int i)
+    void insert(int arr[], int i,int n)
     {
-        //code here7
-        int j=i;
+        //code here
+       int j=i;
+        
         while(j>0 && arr[j-1]>arr[j])
         {
-            int t=arr[j-1];
-            arr[j-1]=arr[j];
-            arr[j]=t;
+            int temp=arr[j];
+            arr[j]=arr[j-1];
+            arr[j-1]=temp;
             j--;
         }
+        
+        
     }
      public:
     //Function to sort the array using insertion sort algorithm.
@@ -36,7 +39,7 @@ class Solution
         //code here
         for(int i=0;i<n;i++)
         {
-            insert(arr,i);
+            insert(arr,i,n);
         }
         
     }
