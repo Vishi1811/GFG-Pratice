@@ -28,14 +28,14 @@ class Solution {
     // Function to count nodes of a linked list.
     int getCount(struct Node* head) {
 
-         int count=0;
-        Node* t=head;
-        while(t!=NULL)
+        // Code here
+        int cnt=0;
+        while(head)
         {
-            count++;
-            t=t->next;
+            cnt++;
+            head=head->next;
         }
-        return count;
+        return cnt;
     }
 };
 
