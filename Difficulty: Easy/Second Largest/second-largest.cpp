@@ -10,24 +10,23 @@ class Solution {
   public:
     // Function returns the second
     // largest elements
-    int print2largest(vector<int> &arr) {
+    int getSecondLargest(vector<int> &arr) {
         // Code Here
-        int m=-1;
-        int sm=-1;
+        int largest=INT_MIN;
+        int secondLargest=INT_MIN;
         for(int i=0;i<arr.size();i++)
         {
-            if(arr[i]>m)
+            if(largest<arr[i])
             {
-                 sm=m;
-                m=arr[i];
-               
+                secondLargest=largest;
+                largest=arr[i];
             }
-            if(arr[i]>sm &&arr[i]<m )
+            if(secondLargest<arr[i] && arr[i]<largest)
             {
-                sm=arr[i];
+                secondLargest=arr[i];
             }
         }
-        return sm;
+        return secondLargest==INT_MIN ?-1:secondLargest; 
     }
 };
 
@@ -47,8 +46,9 @@ int main() {
             arr.push_back(number);
         }
         Solution ob;
-        int ans = ob.print2largest(arr);
+        int ans = ob.getSecondLargest(arr);
         cout << ans << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
