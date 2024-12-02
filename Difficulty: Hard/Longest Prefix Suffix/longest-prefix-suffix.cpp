@@ -11,28 +11,34 @@ using namespace std;
 
 class Solution {
   public:
-    int lps(string str) {
+    int longestPrefixSuffix(string &s) {
         // Your code goes here
-          vector<int>count(str.size(),0);
-        int pre= 0, suff = 1;
-        while(suff<str.size()){
-            if(str[pre]==str[suff]){
-                count[suff]=pre+1;
+        int n=s.size();
+        vector<int>lps(n);
+        int pre=0,suff=1;
+        while(suff<n)
+        {
+            if(s[pre]==s[suff])
+            {
+                lps[suff]=pre+1;
                 pre++;
                 suff++;
             }
-            else{
-                if(pre==0){
-                    count[suff] = 0;
+            else
+            {
+                if(pre==0)
+                {
+                    lps[suff]=0;
                     suff++;
                 }
-                else{
-                    pre = count[pre-1];
+                else
+                {
+                    pre=lps[pre-1];
+
                 }
             }
         }
-        
-        return count[str.size()-1];
+        return lps[n-1];
     }
 };
 
@@ -52,7 +58,10 @@ int main() {
 
         Solution ob;
 
-        cout << ob.lps(str) << "\n";
+        cout << ob.longestPrefixSuffix(str) << "\n";
+
+        cout << "~"
+             << "\n";
     }
 
     return 0;
