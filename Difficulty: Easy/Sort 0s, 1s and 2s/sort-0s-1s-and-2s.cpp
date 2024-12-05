@@ -8,26 +8,23 @@ class Solution {
   public:
     void sort012(vector<int>& arr) {
         // code here
-        int start=-1,mid=0,end=arr.size()-1;
-        while(mid<=end)
+        int n=arr.size();
+        int i=-1,j=0,k=n-1;
+        while(j<=k)
         {
-            if(arr[mid]==2)
-            {
-                swap(arr[mid],arr[end]);
-                end--;
+            if(arr[j]==0){
+                i++;
+                swap(arr[i],arr[j]);
+                j++;
             }
-            else if(arr[mid]==0){
-                start++;
-                swap(arr[mid],arr[start]);
-                mid++;
+            else if(arr[j]==2)
+            {
+                swap(arr[k],arr[j]);
+                k--;
                 
             }
-            else
-            {
-                mid++;
-            }
+            else j++;
         }
-        
     }
 };
 
@@ -57,6 +54,7 @@ int main() {
         }
 
         cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
