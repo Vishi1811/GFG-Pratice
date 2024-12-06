@@ -5,13 +5,9 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    
   public:
-    // arr[]: Input Array
-    // N : Size of the Array arr[]
-    // Function to count inversions in the array.
-    long long int merge(vector<long long > &arr, int low, int mid, int high) {
-        vector<long long > temp; // temporary array
+     long long int merge(vector<int> &arr, int low, int mid, int high) {
+        vector<int > temp; // temporary array
         int left = low;      // starting index of left half of arr
         int right = mid + 1;   // starting index of right half of arr
     
@@ -53,7 +49,7 @@ class Solution {
         return cnt; // Modification 3
    }
 
-    long long int mergeSort(vector<long long > &arr, int low, int high) {
+    long long int mergeSort(vector<int > &arr, int low, int high) {
         long long int cnt = 0;
         if (low >= high) return cnt;
         int mid = (low + high) / 2 ;
@@ -62,14 +58,9 @@ class Solution {
         cnt += merge(arr, low, mid, high);  // merging sorted halves
         return cnt;
     }
-
-    
-    long long int inversionCount(vector<long long> &arr) {
-        // Your Code Here
+    int inversionCount(vector<int> &arr) {
         int n=arr.size();
         return mergeSort(arr,0,n-1 );
-
-        
     }
 };
 
@@ -77,20 +68,21 @@ class Solution {
 
 int main() {
 
-    long long T;
+    int T;
     cin >> T;
     cin.ignore();
     while (T--) {
         int n;
-        vector<long long> a, b;
+        vector<int> a;
         string input;
         getline(cin, input);
         stringstream ss(input);
-        long long num;
+        int num;
         while (ss >> num)
             a.push_back(num);
         Solution obj;
         cout << obj.inversionCount(a) << endl;
+        cout << "~" << endl;
     }
 
     return 0;
