@@ -51,35 +51,46 @@ class Solution {
     Node* segregate(Node* head) {
 
         // Add code here
-        int cnt0=0,cnt1=0,cnt2=0;
+        if(head==NULL || head->next==NULL)return head;
+        Node * zerohead= new Node(-1);
+        Node * onehead=new Node(-1);
+        Node * twohead=new Node(-1);
+        Node *zero=zerohead , *one=onehead, *two= twohead;
         Node *t=head;
         while(t)
         {
-            if(t->data==0)cnt0++;
-            else if(t->data==1)cnt1++;
-            else cnt2++;
-            t=t->next;
+            if(t->data==0)
+            {
+                zero->next=t;
+                zero=t;
+               
+            }
+            else if(t->data==1)
+            {
+                one->next=t;
+                one=t;
+                
+            }
+            else
+            {
+                two->next=t;
+                two=t;
+            }
+             t=t->next;
         }
-        t=head;
-        while(cnt0)
-        {
-            t->data=0;
-            t=t->next;
-            cnt0--;
-        }
-         while(cnt1)
-        {
-            t->data=1;
-            t=t->next;
-            cnt1--;
-        }
-         while(cnt2)
-        {
-            t->data=2;
-            t=t->next;
-            cnt2--;
-        }
-        return head;
+        zero->next = (onehead->next) ? onehead->next : twohead->next;
+        one->next = twohead->next;
+        two->next = NULL;
+    
+        
+        Node* newhead = zerohead->next;
+    
+        
+        delete zerohead;
+        delete onehead;
+        delete twohead;
+    
+        return newhead;
     }
 };
 
