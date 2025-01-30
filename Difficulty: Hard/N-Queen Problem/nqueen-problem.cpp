@@ -4,71 +4,73 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 // } Driver Code Ends
 // User function Template for C++
-// User function Template for C++
-class Solution{
-public:
-    vector<vector<int>> ans;
-    bool check(vector<vector<int>>& board, int i, int j) {
-        for(int k = 0; k < j; k++) {
-            if(board[i][k] == 1) return false;
-        }
-        int x = i, y = j;
-        while(x >= 0 && y >= 0) if(board[x--][y--] == 1) return false;
-        x = i, y = j;
-        while(x < board.size() && y >= 0) if(board[x++][y--] == 1) return false;
-        return true;
+
+class Solution {
+  public:
+    bool check2(vector<int> &temp, int r, int c){
+    for(int i=0; i<temp.size(); i++){
+        int x = abs(temp[i] - r);
+        int y= abs(i+1 - c);
+        if(x==y) return false;
     }
-    
-    void solve(vector<vector<int>>& board, int j, vector<int>& path) {
-        if(j >= board.size()) {
-            ans.push_back(path);
+    return true;
+}
+    void fun(int i, int n, vector<int> &temp, vector<vector<int>> &ans, vector<int> &vis){
+        if(i>n){
+            ans.push_back(temp);
             return;
         }
         
-        for(int k = 0; k < board.size(); k++) {
-            if(check(board, k, j)) {
-                board[k][j] = 1;
-                path.push_back(k + 1);
-                solve(board, j + 1, path);
-                board[k][j] = 0;
-                path.pop_back();
-                
+        for(int j=1; j<=n; j++){
+            if(vis[j]==0 && check2(temp,j,i)){
+                vis[j]=1;
+                temp.push_back(j);
+                fun(i+1,n,temp,ans,vis);
+                temp.pop_back();
+                vis[j]=0;
             }
         }
+        return;
     }
-    
     vector<vector<int>> nQueen(int n) {
-        vector<vector<int>> board(n, vector<int>(n));
-        vector<int> path;
-        solve(board, 0, path);     
+        // code here
+          vector<int> temp;
+        vector<vector<int>> ans;
+        vector<int> vis(n+1,0);
+        fun(1,n,temp,ans,vis);
         return ans;
     }
 };
 
 //{ Driver Code Starts.
 
-int main(){
+int main() {
     int t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--) {
         int n;
-        cin>>n;
-        
+        cin >> n;
+
         Solution ob;
         vector<vector<int>> ans = ob.nQueen(n);
-        if(ans.size() == 0)
-            cout<<-1<<"\n";
+        if (ans.size() == 0)
+            cout << -1 << "\n";
         else {
-            for(int i = 0;i < ans.size();i++){
-                cout<<"[";
-                for(int u: ans[i])
-                    cout<<u<<" ";
-                cout<<"] ";
+            sort(ans.begin(), ans.end());
+            for (int i = 0; i < ans.size(); i++) {
+                cout << "[";
+                for (int u : ans[i])
+                    cout << u << " ";
+                cout << "] ";
             }
-            cout<<endl;
+            cout << endl;
         }
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
