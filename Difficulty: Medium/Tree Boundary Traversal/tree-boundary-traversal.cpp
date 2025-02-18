@@ -104,62 +104,57 @@ class Node {
     }
 };
 */
+bool isLeaf(Node *root)
+{
+    return !root->left && !root->right;
+}
+void addLeftNode(Node *root,vector<int>&res)
+{
+    Node *curr=root->left;
+    while(curr)
+    {
+        if(!isLeaf(curr))res.push_back(curr->data);
+        if(curr->left)curr=curr->left;
+        else curr=curr->right;
+    }
+}
+void addLeafNode(Node *root,vector<int>&res)
+{
+    if(isLeaf(root))return res.push_back(root->data);
+    if(root->left)addLeafNode(root->left,res);
+    if(root->right) addLeafNode(root->right,res);
+}
+void addRightNode(Node *root,vector<int>&res)
+{
+     Node *curr=root->right;
+     stack<int>st;
+     while(curr)
+     {
+         if(!isLeaf(curr))st.push(curr->data);
+         if(curr->right)curr=curr->right;
+         else curr=curr->left;
+     }
+     while(!st.empty())
+     {
+         res.push_back(st.top());
+         st.pop();
+     }
+}
 
 class Solution {
   public:
-      void leftBoundary(Node* node,vector<int> &ans){
-        if(node==NULL)  return;
-        ans.push_back(node->data);
-        if(node->left == NULL)  return;
-        node=node->left;
-        while(true){
-            if(node->left == NULL && node->right == NULL){
-                return;
-            }
-            ans.push_back(node->data);
-            if(node->left)  node=node->left;
-            else    node=node->right;
-        }
-    }
-    
-    void addLeaves(Node* root,vector<int> &ans){
-        if(root == NULL)    return;
-        if(root->left==NULL && root->right==NULL){
-            ans.push_back(root->data);
-        }
-        if(root->left)  addLeaves(root->left,ans);
-        if(root->right) addLeaves(root->right,ans);
-    }
-    
-    void rightBoundary(Node* node,vector<int> &ans){
-        if(node==NULL || node->right==NULL)  return;
-        node=node->right;
-        stack<int> s;
-        while(true){
-            if(node->left==NULL && node->right==NULL)
-                break;
-            s.push(node->data);
-            if(node->right) node=node->right;
-            else    node=node->left;
-            
-        }
-        while(!s.empty()){
-            int top=s.top();
-            s.pop();
-            ans.push_back(top);
-        }
-    }
+     
    vector<int> boundaryTraversal(Node *root) {
         // code here
-        vector<int> ans;
-        leftBoundary(root,ans);
-        addLeaves(root->left,ans);
-        addLeaves(root->right,ans);
-        rightBoundary(root,ans);
-        
-        return ans;
-        
-        
+       vector<int>res;
+       if(root==NULL)return res;
+       res.push_back(root->data);
+       if(isLeaf(root))return res;
+       addLeftNode(root,res);
+       addLeafNode(root,res);
+       addRightNode(root,res);
+       
+       return res;
     }
     
 
