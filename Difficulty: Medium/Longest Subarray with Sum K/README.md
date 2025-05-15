@@ -5,7 +5,7 @@
 <strong>Explanation: </strong></span><span style="font-size: 18.6667px;">Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. The length of the longest subarray with a sum of 15 is 6.</span></pre>
 <pre><span style="font-size: 14pt;"><strong>Input:</strong> arr[] = [-5, 8, -14, 2, 4, 12], k = -5
 <strong>Output:</strong> 5
-<strong>Explanation: </strong></span><span style="font-size: 18.6667px;">Only subarray with sum = 15 is [-5, 8, -14, 2, 4] of length 5.</span></pre>
+<strong>Explanation: </strong></span><span style="font-size: 18.6667px;">Only subarray with sum = -5 is [-5, 8, -14, 2, 4] of length 5.</span></pre>
 <pre><span style="font-size: 14pt;"><strong>Input:</strong> arr[] = [10, -10, 20, 30], k = 5
 <strong>Output:</strong> 0
 <strong>Explanation: </strong></span><span style="font-size: 18.6667px;">No subarray with sum = 5 is present in arr[].</span></pre>
